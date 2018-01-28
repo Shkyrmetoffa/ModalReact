@@ -1,11 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import ModalDialog from './components/ModalDialog';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+
+import './index.css';
 
 ReactDOM.render(
   <MuiThemeProvider>
-    <App />
+    <ModalDialog />
   </MuiThemeProvider>
 , document.getElementById('root'));

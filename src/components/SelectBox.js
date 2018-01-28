@@ -8,30 +8,36 @@ const selectIconStyle = {
   fill: '4a4a4a'
 };
 
-const items = [
-  <MenuItem key={1} value={1} primaryText="Twin" />,
-  <MenuItem key={2} value={2} primaryText="Tripple" />,
-  <MenuItem key={3} value={3} primaryText="Quadro" />
-];
+const SelectBox = props => {
+  const handleChangeValue = (event, index, valueData) => {
+    props.handleChange(Object.assign({}, props.data, { value: valueData}));
+  }
+  const handleChangeInputValue = (event, valueData) => {
+    props.handleChange(Object.assign({}, props.data, { inputValue: +valueData}));
 
-const SelectBox = props => (
+  }
+  const renderMenuItems = (item) => {
+  return (<MenuItem key={item.value} value={item.value} primaryText={item.primaryText} />)
+  }
+return (
   <div>
     <SelectField
-      value={props.value}
-      onChange={props.handleChange}
+      value={props.data.value}
+      onChange={handleChangeValue}
       iconStyle={selectIconStyle}
       style={{ width: 150, float: 'left' }}
     >
-      { items }
+      {props.menusArray.map(item => renderMenuItems(item))}
     </SelectField>
       <TextField
         type='number'
         style={{ width: 50, cursor: 'pointer', float: 'left' }}
-        // onChange={props.changeInputValue}
-        defaultValue={props.inputValue}
-        id={props.id}
+        onChange={handleChangeInputValue}
+        defaultValue={props.data.inputValue}
+        id={props.data.key + ''}
       />
-  </div>
-);
+    </div>
+  );
+}
    
 export default SelectBox;

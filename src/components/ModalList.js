@@ -23,9 +23,8 @@ const ModalList = props => {
             <div>
               <SelectBox 
                 handleChange={props.handleChange}
-                changeInputValue={props.changeInputValue}
-                value={props.value}
-                inputValue={props.inputValue}
+                data={data}
+                menusArray={props.menusArray}
                 id={`id ${counter++}`}
               />
                 <IconButton 
