@@ -72,10 +72,11 @@ export default class ModalDialog extends Component {
       ];
   
         return (
-          <div>
+          <div className="modal-wrap">
             <RaisedButton 
               label="Open Modal" 
               onClick={this.handleOpen} 
+              // style={{ display: 'block', margin: '0 auto'}}
             />
             <Dialog
               contentClassName='modal-container'
