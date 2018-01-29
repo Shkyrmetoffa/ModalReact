@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
@@ -61,7 +60,7 @@ export default class ModalDialog extends Component {
           primary={true}
           onClick={() => this.addItem()}
         />,
-        <FlatButton
+        <RaisedButton
           label="Сохранить"
           disabled={this.state.save}
           onClick={this.handleClose}
@@ -74,7 +73,7 @@ export default class ModalDialog extends Component {
         />,
       ];
         return (
-          <MuiThemeProvider>
+          <div className='modal-wrap'>
             <RaisedButton 
               label="Open Modal" 
               onClick={this.handleOpen} 
@@ -107,7 +106,7 @@ export default class ModalDialog extends Component {
                 handleRequestDelete={this.handleRequestDelete}
               />
             </Dialog>
-          </MuiThemeProvider>
+          </div>
         );
     };
 };

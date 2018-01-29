@@ -69,7 +69,8 @@ const ModalList = props => {
     );
   };
     return (
-      <div style={styles.root}>
+      <div 
+        style={styles.root}>
         <List
           style={styles.gridList}
         >
