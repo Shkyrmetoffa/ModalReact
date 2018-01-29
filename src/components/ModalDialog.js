@@ -63,8 +63,8 @@ export default class ModalDialog extends Component {
         <RaisedButton
           label="Сохранить"
           disabled={this.state.save}
+          primary={true}
           onClick={this.handleClose}
-          style={{ hoverColor:'rgb(0, 188, 212)' }}
         />,
         <FlatButton
           label="Отмена"
