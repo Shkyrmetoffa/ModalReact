@@ -5,7 +5,35 @@ import IconButton from 'material-ui/IconButton';
 import NavigationClose from 'material-ui/svg-icons/navigation/close';
 import SelectBox from './SelectBox';
 
-import { styles } from './styleList';
+const styles = {
+  root: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'space-around'
+  },
+  gridList: {
+    width: 500,
+    height: 150,
+    overflowY: 'auto'
+  },
+  listButtonStyle: {
+    color: '#f44336',
+    fill: '#f44336',
+    background: '#fbe6e9',
+    border: '3px solid #fbe6e9',
+    borderRadius: '50%'
+  },
+  chip: {
+    background: 'white',
+  },
+  delete: {
+    display: 'none'
+  },
+  wrapper: {
+    display: 'flex',
+    flexWrap: 'wrap',
+  }
+};
 
 const ModalList = props => {
   let counter = 20;
@@ -29,7 +57,7 @@ const ModalList = props => {
               />
                 <IconButton 
                   iconStyle={styles.listButtonStyle} 
-                  className='icon-button' 
+                  className="icon-button" 
                   onClick ={() => props.handleRequestDelete(data.key)} 
                 >
                   <NavigationClose />
@@ -40,7 +68,6 @@ const ModalList = props => {
       </div>
     );
   };
-
     return (
       <div style={styles.root}>
         <List

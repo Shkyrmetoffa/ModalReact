@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 import IconButton from 'material-ui/IconButton';
 import NavigationClose from 'material-ui/svg-icons/navigation/close';
-
 import ModalList from './ModalList';
 
 const customContentStyle = {
@@ -12,13 +12,15 @@ const customContentStyle = {
   minWidth: '320px'
 };
 
+const customActionsContainerStyle = {
+  textAlign: 'left',
+  padding: '0'
+};
+
 export default class ModalDialog extends Component {
   constructor(props) {
     super(props);
-    
     this.state = {
-      // value: 1,
-      // inputValue: 1,
       open: false,
       save: true,
       menusArray: [
@@ -36,11 +38,10 @@ export default class ModalDialog extends Component {
     handleClose = () => this.setState({ open: false });
 
     handleChange = obj => this.setState({ 
-      chipData: this.state.chipData.map( chip => 
-        chip.key === obj.key ? obj : chip),
-        save: false 
-      });
-    // changeInputValue = (event, inputValue) => this.setState({inputValue});
+      chipData: this.state.chipData.map( chip => chip.key === obj.key ? obj : chip),
+      save: false 
+    });
+
     addItem() {
       this.setState({
         chipData: this.state.chipData.concat({ key: Date.now(), inputValue: 1, value: 1 }),
@@ -55,6 +56,7 @@ export default class ModalDialog extends Component {
     render() {
       const actions = [
         <FlatButton
+          className="add-button"
           label="Добавить"
           primary={true}
           onClick={() => this.addItem()}
@@ -63,6 +65,7 @@ export default class ModalDialog extends Component {
           label="Сохранить"
           disabled={this.state.save}
           onClick={this.handleClose}
+          style={{ hoverColor:'rgb(0, 188, 212)' }}
         />,
         <FlatButton
           label="Отмена"
@@ -70,17 +73,16 @@ export default class ModalDialog extends Component {
           onClick={this.handleClose}
         />,
       ];
-  
         return (
-          <div className="modal-wrap">
+          <MuiThemeProvider>
             <RaisedButton 
               label="Open Modal" 
               onClick={this.handleOpen} 
-              // style={{ display: 'block', margin: '0 auto'}}
             />
             <Dialog
-              contentClassName='modal-container'
+              contentClassName="modal-container"
               contentStyle={customContentStyle}
+              actionsContainerStyle={customActionsContainerStyle}
               actions={actions}
               modal={true}
               open={this.state.open}
@@ -105,7 +107,7 @@ export default class ModalDialog extends Component {
                 handleRequestDelete={this.handleRequestDelete}
               />
             </Dialog>
-          </div>
+          </MuiThemeProvider>
         );
     };
 };
