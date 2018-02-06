@@ -36,6 +36,11 @@ export default class ModalDialog extends Component {
   
     handleClose = () => this.setState({ open: false });
 
+    handleCancel = () => {
+      this.state.chipData.pop();
+      this.setState({ chipData: this.state.chipData });
+    };
+
     handleChange = obj => this.setState({ 
       chipData: this.state.chipData.map( chip => chip.key === obj.key ? obj : chip),
       save: false 
@@ -69,7 +74,7 @@ export default class ModalDialog extends Component {
         <FlatButton
           label="Отмена"
           primary={true}
-          onClick={this.handleClose}
+          onClick={this.handleCancel}
         />,
       ];
         return (

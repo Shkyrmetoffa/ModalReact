@@ -17,7 +17,7 @@ const SelectBox = props => {
     props.handleChange(Object.assign({}, props.data, { inputValue: +valueData }));
   };
 
-  const renderMenuItems = (item) => (
+  const renderMenuItems = item => (
     <MenuItem 
       key={item.value} 
       value={item.value} 
